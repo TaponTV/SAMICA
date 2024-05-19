@@ -7,8 +7,8 @@ class StudentGraduate(md.Model):
     class Meta:
         db_table = 'student_graduate'
 
-
 class StudentGraduateJobs(md.Model):
+    
     class Meta:
         db_table = 'student_graduate_jobs'
 

@@ -1,89 +1,70 @@
 from django.db import models as md
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-class Users(md.Model):
-    """
-    _Clase utilizada como modelo para la tabla "users" en la BD_
-
-    Args:
-        md(_Model_): Class Model for Django
-        
-    """
-    id_user = md.AutoField(primary_key=True)
-    username = md.CharField(max_length=25)
-    password = md.CharField(max_length=25)
-    id_rol = md.IntegerField()
+class RoleWeb(md.Model):
+    
+    id_rol = md.AutoField(primary_key=True)
+    rolname = md.CharField(max_length=20)
+    description = md.CharField(max_length=25)
     status = md.IntegerField()
+    
+    class Meta:
+        db_table = 'role_web'
+        
+
+class Users(AbstractBaseUser):
+    
+    id_user = md.AutoField(primary_key=True)
+    username = md.CharField(max_length=25, unique=True)
+    academic_key = md.CharField(max_length=20)
+    password = md.CharField(max_length=255)     # para hash
+    status = md.IntegerField()
+    
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['academic_key']
+    
+    objects = BaseUserManager()
     
     class Meta:
         db_table = 'users'
 
 
-class UserRol(md.Model):
-    """
-    _Clase utilizada como modelo para la tabla "user_relation_rol" en la BD_
-
-    Args:
-        md(_Model_): Class Model for Django
-        
-    """
+class UserRole(md.Model):
+    
+    id_user_web = md.ForeignKey(Users, on_delete=md.CASCADE)
+    id_rol_web = md.ForeignKey(RoleWeb, on_delete=md.CASCADE)
+    status = md.IntegerField()
+    
     class Meta:
-        db_table = 'user_relation_rol'
+        db_table = 'users_role'
 
 
 class Permissions(md.Model):
-    """
-    _Clase utilizada como modelo para la tabla "users" en la BD_
-
-    Args:
-        md(_Model_): Class Model for Django
-        
-    """
+    
+    id_permission = md.AutoField(primary_key=True)
+    description = md.CharField(max_length=40)
+    
     class Meta:
         db_table = 'permissions'
 
 
-class RolWeb(md.Model):
-    """
-    _Clase utilizada como modelo para la tabla "users" en la BD_
-
-    Args:
-        md(_Model_): Class Model for Django
-        
-    """
-    class Meta:
-        db_table = 'rol'
-
-
-class PermissionRol(md.Model):
-    """
-    _Clase utilizada como modelo para la tabla "users"_
+class RolePermissions(md.Model):
     
+    id_rol_web = md.ForeignKey(RoleWeb, on_delete=md.CASCADE)
+    id_permission_data = md.ForeignKey(Permissions)
     
-
-    Args:
-        md(_Model_): Class Model for Django
-        
-    """
     class Meta:
-        db_table = 'permissions_relation_rol'
+        db_table = 'role_permissions'
         
         
 class UserActivityLog(md.Model):
-    """
-    _Clase utilizada como modelo para la tabla "userLog"_
     
-    Cumple la función de mostrar un registro de la actividad de los usuarios en el sistema como conexiones y desconexiones
- 
-    Args:
-        md(_Model_): Class Model for Django
-        
-    """
-    _id_log_activity = md.AutoField(primary_key=True)
+    id_log_activity = md.AutoField(primary_key=True)
     user = md.ForeignKey(Users, on_delete=md.CASCADE)
     action = md.CharField(max_length=100)
-    _timestamp = md.DateTimeField(auto_now_add=True)
+    timestamp = md.DateTimeField(auto_now_add=True)
     device = md.CharField(max_length=100)
     
     class Meta:
-        db_table = 'userLog'
+        db_table = 'user_log_activity'
