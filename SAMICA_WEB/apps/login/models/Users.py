@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class RoleWeb(md.Model):
     
+    
     id_rol = md.AutoField(primary_key=True)
     rolname = md.CharField(max_length=20)
     description = md.CharField(max_length=25)
@@ -29,6 +30,21 @@ class Users(AbstractBaseUser):
     class Meta:
         db_table = 'users'
 
+class UserData(md.Model):
+    
+    # Esta tabla solo será utilizada para guardar el nombre de los usuarios, ya que todo usuario comparte esto en común
+    # YO RECOMIENDO NO CAMBIARLO, puesto que así se mantiene una separabilidad entre los datos de autenticación y los datos personales
+    # pero si por fines prácticos se requiere el cambio, adelante:D 
+    # pd. ahí pueden agregar la fecha de nacimiento o eso, para poder añadir una función sorpresa para cuando sea el cumpleaños de la persona:D
+    # habrá alguno que otro codigo comentado, ya para añadir esa función jaja suerte!
+    
+    academic_key = md.CharField(primary_key=True, max_length=20, unique=True)
+    firstname = md.CharField(max_length=40)
+    lastname = md.CharField(max_length=40)
+    status = md.IntegerField()
+    
+    class Meta:
+        db_table = 'UserData'
 
 class UserRole(md.Model):
     
