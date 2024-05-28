@@ -13,7 +13,7 @@ class RoleWeb(md.Model):
         db_table = 'role_web'
         
 
-class Users(AbstractBaseUser):
+class Users(AbstractBaseUser):          
     
     id_user = md.AutoField(primary_key=True)
     username = md.CharField(max_length=25, unique=True)
