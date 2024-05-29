@@ -4,7 +4,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class RoleWeb(md.Model):
     
-    
     id_rol = md.AutoField(primary_key=True)
     rolname = md.CharField(max_length=20)
     description = md.CharField(max_length=25)
@@ -68,7 +67,7 @@ class Permissions(md.Model):
 class RolePermissions(md.Model):
     
     id_rol_web = md.ForeignKey(RoleWeb, on_delete=md.CASCADE)
-    id_permission_data = md.ForeignKey(Permissions)
+    id_permission_data = md.ForeignKey(Permissions, on_delete=md.CASCADE)
     
     class Meta:
         db_table = 'role_permissions'
