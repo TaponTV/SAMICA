@@ -59,6 +59,7 @@ class Permissions(md.Model):
     
     id_permission = md.AutoField(primary_key=True)
     description = md.CharField(max_length=40)
+    permission_name = md.CharField(max_length=25)
     
     class Meta:
         db_table = 'permissions'

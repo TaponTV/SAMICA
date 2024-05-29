@@ -9,11 +9,11 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <h2>Ingreso al sistema</h2>
-    <form action="POST">
+    <h2>Registro de usuario</h2>
+    <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Ingresar</button>
+        <button type="submit">Registrar</button>
     </form>
 </body>
 </html>

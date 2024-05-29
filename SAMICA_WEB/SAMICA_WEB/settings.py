@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'samica_database',
         'USER': 'postgres',
-        'PASSWORD': 'samica',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
     }

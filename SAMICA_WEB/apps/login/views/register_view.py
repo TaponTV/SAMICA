@@ -12,4 +12,4 @@ def RegisterUserView(request):
             return redirect('dashboard')
     else:
         form = RegisterUserForm()
-    return render(request, 'templates/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
