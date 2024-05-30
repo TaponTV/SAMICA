@@ -19,7 +19,7 @@ class Users(AbstractBaseUser):
     username = md.CharField(max_length=25, unique=True)
     academic_key = md.CharField(max_length=20)
     password = md.CharField(max_length=255)     # para hash
-    status = md.IntegerField()
+    status = md.IntegerField(default=1)
     
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['academic_key']
@@ -40,7 +40,7 @@ class UserData(md.Model):
     academic_key = md.CharField(primary_key=True, max_length=20, unique=True)
     firstname = md.CharField(max_length=40)
     lastname = md.CharField(max_length=40)
-    status = md.IntegerField()
+    status = md.IntegerField(default=1)
     
     class Meta:
         db_table = 'UserData'
@@ -49,7 +49,7 @@ class UserRole(md.Model):
     
     id_user_web = md.ForeignKey(Users, on_delete=md.CASCADE)
     id_rol_web = md.ForeignKey(RoleWeb, on_delete=md.CASCADE)
-    status = md.IntegerField()
+    status = md.IntegerField(default=1)
     
     class Meta:
         db_table = 'users_role'

@@ -9,7 +9,7 @@ def LogInUserView(request):
         if form.is_valid():
             auth_user = form.get_user()
             login(request, auth_user)
-            return redirect('login.html')
+            return redirect('dashboard')
     else:
         form = LogInUserForm()
     return render(request, "login.html", {'form': form})
