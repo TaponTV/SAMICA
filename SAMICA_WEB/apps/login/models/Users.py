@@ -17,7 +17,7 @@ class Users(AbstractBaseUser):
     
     id_user = md.AutoField(primary_key=True)
     username = md.CharField(max_length=25, unique=True)
-    academic_key = md.CharField(max_length=20)
+    academic_key = md.CharField(max_length=20, unique=True)
     password = md.CharField(max_length=255)     # para hash
     status = md.IntegerField(default=1)
     
