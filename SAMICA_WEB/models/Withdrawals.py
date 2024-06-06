@@ -1,11 +1,11 @@
-from django.db import models as md
+# from django.db import models as md
 
 
-class StudentDeserter(md.Model):
-    class Meta:
-        db_table = 'students_deserters'
+# class StudentDeserter(md.Model):
+#     class Meta:
+#         db_table = 'students_deserters'
 
 
-class StudentWithdrawn(md.Model):
-    class Meta:
-        db_table = 'students_withdrawn'
+# class StudentWithdrawn(md.Model):
+#     class Meta:
+#         db_table = 'students_withdrawn'
