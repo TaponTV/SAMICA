@@ -9,7 +9,7 @@ def RegisterUserView(request):
         if form.is_valid():
             new_user = form.save()
             login(request, new_user)
-            return redirect('dashboard.html')
+            return redirect('dashboard')
     else:
         form = RegisterUserForm()
     return render(request, 'register.html', {'form': form})
