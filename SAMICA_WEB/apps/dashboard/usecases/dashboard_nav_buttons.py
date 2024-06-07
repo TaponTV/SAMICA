@@ -1,4 +1,4 @@
-from models.button import Button
+from ..models.button import Button
 from typing import List, Tuple
 
 
@@ -10,9 +10,9 @@ class RoleButtons:
 class AdminRole(RoleButtons):
     def get_taglist(self) -> List[Tuple[str, str]]:
         return [
-            ('Tablas', 'tables'),
+            ('Tablas', 'tables/'),
             ('Paginas', 'pages'),
-            ('Usuarios', 'users'),
+            ('Usuarios', 'accounts/'),
             ('Graficas', 'charts')
         ]
 

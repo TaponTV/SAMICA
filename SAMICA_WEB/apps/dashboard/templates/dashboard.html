@@ -6,10 +6,10 @@
     <title>{{ title }}</title>
 </head>
 <body>
-    
-    {{ academic }}
+    <h1> DASHBOARD </h1>
+    {{ academic }}<br>
     {% for button in buttons %}
-        {% include 'button.html' with label=button.listButtons.label url=button.listButtons.url %}
+        {% include 'button.html' with label=button.listButtons.label url=button.listButtons.url %}<br>
     {% endfor %}
     {{ message }}
 </body>
