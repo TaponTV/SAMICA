@@ -1,1 +1,1 @@
-from .admin_nav_buttons import GetDashboardButtons
+from .dashboard_nav_buttons import GetDashboardButtons

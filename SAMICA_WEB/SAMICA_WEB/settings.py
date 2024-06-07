@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -82,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'samica_database',
         'USER': 'postgres',
-        'PASSWORD': 'root',
+        'PASSWORD': 'samica',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -126,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-LOGIN_URL = 'login/'
+LOGIN_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

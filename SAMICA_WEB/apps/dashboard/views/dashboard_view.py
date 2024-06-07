@@ -4,12 +4,12 @@ from utils.get_user_data import get_user_data
 from ..usecases import GetDashboardButtons
 
 
-
 @login_required
 def DashboardHomeView(request):
+    
     auth_user = request.user
     context = get_user_data(auth_user)
     context['academic'] = auth_user.academic_key
-    context['buttons'] =  GetDashboardButtons().execute()
+    context['buttons'] = GetDashboardButtons('admin').execute()
     return render(request, 'dashboard.html', context)
     
