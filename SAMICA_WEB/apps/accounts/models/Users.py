@@ -7,7 +7,7 @@ class RoleWeb(md.Model):
     id_rol = md.AutoField(primary_key=True)
     rolname = md.CharField(max_length=20)
     description = md.CharField(max_length=25)
-    status = md.IntegerField()
+    status = md.IntegerField(default=1)
     
     class Meta:
         db_table = 'role_web'

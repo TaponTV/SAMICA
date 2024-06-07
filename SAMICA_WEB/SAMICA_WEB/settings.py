@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.login.apps.LoginConfig',
     'apps.dashboard.apps.DashboardConfig',
+    'apps.accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -81,13 +82,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'samica_database',
         'USER': 'postgres',
-        'PASSWORD': 'samica',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 
-AUTH_USER_MODEL = 'login.Users'
+AUTH_USER_MODEL = 'accounts.Users'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

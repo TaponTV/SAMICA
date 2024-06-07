@@ -1,0 +1,1 @@
+from .admin_views.users_details_view import user_details_view

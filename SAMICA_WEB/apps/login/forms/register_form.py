@@ -1,5 +1,5 @@
 from django import forms
-from ..models import Users
+from apps.accounts.models import Users
 from django.contrib.auth.hashers import make_password
 
 class RegisterUserForm(forms.ModelForm):

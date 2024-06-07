@@ -11,17 +11,17 @@ class AdminRole(RoleButtons):
     def get_taglist(self) -> List[Tuple[str, str]]:
         return [
             ('Tablas', 'tables/'),
-            ('Paginas', 'pages'),
-            ('Usuarios', 'accounts/'),
-            ('Graficas', 'charts')
+            ('Paginas', '/dashboard/pages/'),
+            ('Usuarios', '/accounts/users'),
+            ('Graficas', '/controlpanel/charts')
         ]
 
 
 class TutorRole(RoleButtons):
     def get_taglist(self) -> List[Tuple[str, str]]:
         return [
-            ('Estudiantes', 'students'),
-            ('Historial', 'historial')
+            ('Estudiantes', '/students/'),
+            ('Historial', '/students/historial')
         ]
 
 
@@ -34,7 +34,7 @@ class GetDashboardButtons:
         self.roleuser = roleuser
         self.buttons = [
             Button(label='Dashboard', url='/dashboard/'),
-            Button(label='Configuracion', url='config'),
+            Button(label='Configuracion', url='/accounts/config'),
             Button(label='Cerrar Sesión', url='/logout')
         ]
         self.method_role = self.__select_role()

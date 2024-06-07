@@ -1,4 +1,4 @@
-from apps.login.models import UserData, UserRole, RolePermissions
+from apps.accounts.models import UserData, UserRole, RolePermissions
 
 def get_user_data(auth_user) -> dict:
     
