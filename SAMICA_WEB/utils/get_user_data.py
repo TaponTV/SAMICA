@@ -13,9 +13,9 @@ def get_user_data(auth_user) -> dict:
     
     #Obtiene los datos del usuario en cuestion de sus respectivos roles y permisos
     try:
-        user_role = UserRole.objects.get(id_user_web=auth_user)
-        role_name = user_role.id_rol_web.rolname
-        role_permissions = RolePermissions.objects.filter(id_rol_web=user_role.id_rol_web)
+        user_role = UserRole.objects.get(id_user=auth_user)
+        role_name = user_role.id_rol.rolname
+        role_permissions = RolePermissions.objects.filter(id_rol=user_role.id_rol)
     except UserRole.DoesNotExist:
         role_name = ""
         role_permissions = []
