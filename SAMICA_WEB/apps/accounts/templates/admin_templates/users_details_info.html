@@ -7,10 +7,10 @@
 </head>
 <body>
     {% include 'button.html' with label='Menu' url='/dashboard'%}
+    {% include 'button.html' with label='Registrar Usuario' url='/accounts/register'%}
     <h1> USER DETAILS </h1>
     <table>
         <tr>
-            <th> ID USER </th>
             <th> USERNAME </th>
             <th> ACADEMIC KEY </th>
             <th> PASSWORD </th>
@@ -19,14 +19,13 @@
         </tr>
         {% for data in Data %}
             <tr> 
-                <td> {{data.id_user}} </td>
                 <td> {{data.username}} </td>
-                <td> {{data.academic_key}} </td>
+                <td> {{data.academicKey}} </td>
                 <td> {{data.password}} </td>
                 <td> {{data.status}} </td>
-                <td> {% include 'button.html' with label='Mostrar Datos' url='users/hiddenuser?keyID='|add:data.academic_key %} </td>
-                <td> {% include 'button.html' with label='Editar' url='users/edit?keyID='|add:data.academic_key %} </td>
-                <td> {% include 'button.html' with label='Ocultar/Eliminar' url='users/hiddenuser?keyID='|add:data.academic_key %} </td>
+                <td> {% include 'button.html' with label='Mostrar Datos' url='users/hiddenuser?keyID='|add:data.academicKey %} </td>
+                <td> {% include 'button.html' with label='Editar' url='users/edit?keyID='|add:data.academicKey %} </td>
+                <td> {% include 'button.html' with label='Ocultar/Eliminar' url='users/hiddenuser?keyID='|add:data.academicKey %} </td>
             </tr>
         {% endfor %}
         
