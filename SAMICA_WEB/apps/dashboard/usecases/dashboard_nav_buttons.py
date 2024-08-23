@@ -7,27 +7,63 @@ class RoleButtons:
         raise NotImplementedError
 
 
-class AdminRole(RoleButtons):
+class adminRole(RoleButtons):
     def get_taglist(self) -> List[Tuple[str, str]]:
         return [
-            ('Tablas', 'tables/'),
-            ('Paginas', '/dashboard/pages/'),
-            ('Usuarios', '/accounts/users'),
-            ('Graficas', '/controlpanel/charts')
+            ('Usuarios', '/users/'),
+            ('Estudiantes', '/users/students/'),
+            ('Académicos', '/users/academics'),
+            ('Roles - Permisos', '/accounts/roles/'),
+            ('Registro (log)', '/system/log/'),
+            ('Estadisticas', '/accounts/graphs/'),
+            ('Vistas', '/system/views/')
         ]
 
 
-class TutorRole(RoleButtons):
+class adminFacuRole(RoleButtons):
     def get_taglist(self) -> List[Tuple[str, str]]:
         return [
-            ('Estudiantes', '/students/'),
-            ('Historial', '/students/historial')
+            ('Estudiantes', '/users/students/'),
+            ('Académicos', '/users/academics'),
+            ('Tutores', '/users/academics/tutors/'),
+            ('Estadisticas', '/accounts/graphs/'),
+            ('Experiencias Ed.', '/institution/EE/'),
+            ('Informes', '/report_generator/')
         ]
 
 
-# class DefaultButtons(RoleButtons):
-#     def get_taglist(self) -> List[Tuple[str, str]]:
-#         return []
+class tutorRole(RoleButtons):
+    def get_taglist(self) -> List[Tuple[str, str]]:
+        return [
+            ('Historial Académico', '/users/students/history/'),
+            ('Estadisticas', '/accounts/graphs/professor/'),
+            ('Horarios', '/users/academics/schedule/'),
+            ('Experiencias Ed.', '/users/academics/EE/'),
+            ('Informes', '/report_generator/')
+        ]
+
+
+class professorRole(RoleButtons):
+    def get_taglist(self) -> List[Tuple[str, str]]:
+        return [
+            ('Historial Académico', '/users/students/history/'),
+            ('Estadisticas', '/accounts/graphs/professor/'),
+            ('Horarios', '/users/academics/schedule/'),
+            ('Experiencias Ed.', '/users/academics/EE/'),
+            ('Informes', '/report_generator/')
+        ]
+
+
+class studentRole(RoleButtons):
+    def get_taglist(self) -> List[Tuple[str, str]]:
+        return [
+            ('Historial Académico', '/users/students/history/'),
+            ('Estadisticas', '/accounts/graphs/professor/'),
+            ('Horarios', '/users/academics/schedule/'),
+            ('Experiencias Ed.', '/users/academics/EE/'),
+            ('Informes', '/report_generator/')
+        ]
+
 
 class GetDashboardButtons:
     def __init__(self, roleuser):
@@ -41,11 +77,16 @@ class GetDashboardButtons:
 
     def __select_role(self) -> RoleButtons:
         if self.roleuser == 'admin':
-            return AdminRole()
+            return adminRole()
         elif self.roleuser == 'tutor':
-            return TutorRole()
+            return tutorRole()
+        elif self.roleuser == 'adminFacu':
+            return adminFacuRole()
+        elif self.roleuser == 'professor':
+            return professorRole()
+        elif self.roleuser == 'student':
+            return studentRole()
         else:
-            # return DefaultButtons()
             pass
 
     def execute(self) -> List[Button]:

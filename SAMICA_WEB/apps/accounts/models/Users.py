@@ -11,10 +11,10 @@ class RoleWeb(md.Model):
 
     class Meta:
         db_table = 'role_web'
-  
+
 
 class Users(AbstractBaseUser):
-
+    
     id_user = md.AutoField(primary_key=True)
     username = md.CharField(max_length=25, unique=True)
     academic_key = md.CharField(max_length=20, unique=True)
